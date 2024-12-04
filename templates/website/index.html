@@ -1,0 +1,211 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- main area part start -->
+    <main>
+      <section class="home-area">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-xl-4">
+              {% include "include/card.html" %}
+            </div>
+            <div class="col-xl-4">
+              <div class="row g-4">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-body work-experiance-card">
+                      <h3 class="card-title">Work Experience</h3>
+                      <div class="work-experiance-main">
+                        <ul class="work-experiance-slider list-unstyled">
+                          {% for e in experience %}
+                          <li>
+                            <div class="date">
+                              <p>{{ e.start_year }} - {{ e.end_year }}</p>
+                            </div>
+                            <div class="info">
+                              <div class="icon">
+                                <img src="{{ e.organization_image.url }}" alt="adobe">
+                              </div>
+                              <div class="text">
+                                <h4 class="title">{{ e.organization }}</h4>
+                                <h6 class="subtitle">{{ e.designation }}</h6>
+                              </div>
+                            </div>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                        <ul class="work-experiance-slider list-unstyled">
+                          {% for e in experience %}
+                          <li>
+                            <div class="date">
+                              <p>{{ e.start_year }} - {{ e.end_year }}</p>
+                            </div>
+                            <div class="info">
+                              <div class="icon">
+                                <img src="{{ e.organization_image.url }}" alt="adobe">
+                              </div>
+                              <div class="text">
+                                <h4 class="title">{{ e.organization }}</h4>
+                                <h6 class="subtitle">{{ e.designation }}</h6>
+                              </div>
+                            </div>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="card expertise-card">
+                    <div class="card-body">
+                      <h3 class="card-title">My Expertise Area
+                      </h3>
+                      <div class="expertise-main mt-24">
+                        <div class="row g-3">
+                          {% for e in expertise %}
+                          <div class="col-xl-4 col-md-4 col-sm-6 col-6">
+                            <div class="expertise-item">
+                              <div class="image text-center">
+                                <img src="{{  e.skill_icon.url }}" alt="figma">
+                              </div>
+                              <div class="text">
+                                <h4 class="title">{{ e.skill_name }}</h4>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4">
+              <div class="card card-projects">
+                <div class="card-body">
+
+                  <h3 class="card-title">Recent Projects <a class="link-btn" href="{% url 'website:works' %}">All Projects
+                      <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+
+                    </a></h3>
+                  <div class="projects-main mt-24">
+                    <div class="row g-4 parent-container">
+                      {% for p in projects %}
+                      <div class="col-lg-12">
+                        <div class="project-item">
+                          <div class="image">
+                            <img src="{{ p.image.url }}" alt="project-1" class="img-fluid w-100">
+
+                            <div class="info">
+                              <span class="category">{{ p.over_view|truncatechars:20 }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="services-area mt-24">
+            <div class="row g-4">
+              <div class="col-xl-8">
+                <div class="card services-card">
+                  <div class="card-body">
+                    <h3 class="card-title">Services I Offer
+                      <a class="link-btn" href="{% url 'website:services' %}"> See All Services
+                        <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+
+                      </a></h3>
+                    <div class="services-main mt-24">
+                      <div class="row g-4">
+                        {% for s in services %}
+                          <div class="col-md-3 col-sm-6 col-6">
+                          <div class="services-item text-center">
+                            <div class="image">
+                              <img src="{{ s.icon.url }}" alt="ui-ux">
+                            </div>
+                            <div class="text">
+                              <h3 class="title">{{ s.name }}</h3>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4">
+                <div class="card lets-talk-together-card">
+                  <div class="card-body">
+                    <div class="scrolling-info">
+                      <div class="slider-item">
+                        <p>
+                          Available For Hire 🚀 Crafting Digital Experiences 🎨 Available For Hire 🚀 Crafting Digital
+                          Experiences 🎨
+                        </p>
+                      </div>
+                    </div>
+                    <h3 class="card-title">Let's👋
+                      <span class="d-block">Work Together</span>
+                    </h3>
+                    <a class="link-btn" href="{% url 'website:contact' %}"> Let's Talk
+                      <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.5 11.6665V6.6665H12.5" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M17.5 6.6665L10 14.1665L2.5 6.6665" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- background shape area start -->
+      <div class="background-shapes">
+        <div class="shape-1 common-shape">
+          <img src="{% static 'website/img/bg/banner-shape-1.png' %}" alt="banner-shape-1">
+        </div>
+        <div class="shape-2 common-shape">
+          <img src="{% static 'website/img/bg/banner-shape-1.png' %}" alt="banner-shape-1">
+        </div>
+        <div class="threed-shape-1 move-with-cursor" data-value="1">
+          <img src="{% static 'website/img/bg/object-3d-1.png' %}" alt="object-3d-1">
+        </div>
+        <div class="threed-shape-2 move-with-cursor" data-value="1">
+          <img src="{% static 'website/img/bg/object-3d-2.png' %}" alt="object-3d-2">
+        </div>
+      </div>
+      <!-- background shape area end -->
+    </main>
+    <!-- main area part end -->
+
+{% endblock %}

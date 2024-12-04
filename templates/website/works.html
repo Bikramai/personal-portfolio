@@ -1,0 +1,121 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% load tags %}
+
+{% block content %}
+
+<!-- main area part start -->
+<main>
+
+    <section class="content-box-area mt-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-xl-12">
+                    <div class="card content-box-card">
+                        <div class="card-body portfolio-card">
+                            <div class="top-info">
+                                <div class="text">
+                                    <h1 class="main-title">Check Out My Latest <span>object</span></h1>
+                                    <p>I'm here to help if you're searching for a product designer to bring your idea to
+                                        life or a
+                                        design partner to help take your business to the next level.</p>
+                                </div>
+                            </div>
+                            <div class="portfolio-area">
+                                <div class="row g-4 parent-container">
+                                    {% for p in object %}
+                                    <div class="col-md-4">
+                                        <div class="portfolio-item">
+                                            <div class="image">
+                                                <img src="{{ p.image.url }}" alt="project-1" class="img-fluid w-100">
+                                                </a>
+                                            </div>
+                                            <div class="text">
+                                                <div class="info">
+                                                    <a target="_blank" href="{% url 'website:works_detail' p.pk %}" class="title">{{ p.name }}</a>
+                                                    <p class="subtitle">{{ p.overview|slice:100 }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="pagination">
+                                    <ul class="list-unstyled">
+                                        {% if object.has_previous %}
+                                        <li class="prev">
+                                            <a href="{% relative_url object.previous_page_number 'page' request.GET.urlencode %}">
+                                                <button>
+                                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                         viewBox="0 0 24 24"
+                                                         stroke-width="2" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
+                                                    </svg>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        <li>
+                                            <button>
+                                                {{ object.number }}
+                                            </button>
+
+                                        </li>
+                                        {% if object.has_next %}
+                                        <li class="next">
+                                            <a href="{% relative_url object.next_page_number 'page' request.GET.urlencode %}">
+                                                <button>
+                                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                         viewBox="0 0 24 24"
+                                                         stroke-width="2" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                                    </svg>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="work-together-slider">
+                                <div class="slider-main d-flex gap-4 align-items-center">
+                                    <div class="slider-item">
+                                        <a href="contact.html">Let's 👋 Work Together</a>
+                                        <a href="contact.html">Work with ➡️ {{ about.name }}</a>
+                                    </div>
+                                    <div class="slider-item">
+                                        <a href="contact.html">Let's 👋 Work Together</a>
+                                        <a href="contact.html">Work with ➡️ {{ about.name }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- background shape area start -->
+    <div class="background-shapes">
+        <div class="shape-1 common-shape">
+            <img src="{% static 'website/img/bg/banner-shape-1.png' %}" alt="banner-shape-1">
+        </div>
+        <div class="shape-2 common-shape">
+            <img src="{% static 'website/img/bg/banner-shape-1.png' %}" alt="banner-shape-1">
+        </div>
+        <div class="threed-shape-1 move-with-cursor" data-value="1">
+            <img src="{% static 'website/img/bg/object-3d-1.png' %}" alt="object-3d-1">
+        </div>
+        <div class="threed-shape-2 move-with-cursor" data-value="1">
+            <img src="{% static 'website/img/bg/object-3d-2.png' %}" alt="object-3d-2">
+        </div>
+    </div>
+    <!-- background shape area end -->
+</main>
+<!-- main area part end -->
+
+{% endblock %}
